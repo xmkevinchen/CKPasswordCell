@@ -22,13 +22,111 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmPasswordHeightLayout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmPasswordBottomLayout;
 
+@property (strong, nonatomic) HHPasswordCellEditingBlock editingBlock;
+@property (strong, nonatomic) HHPasswordCellValidatingBlock validatingBlock;
+
 
 @end
 
 @implementation HHPasswordCell
 
+
++ (instancetype)cellWithIdentifier:(NSString *)identifier
+                         tableView:(UITableView *)tableView
+                         indexPath:(NSIndexPath *)indexPath
+                             style:(HHPasswordCellStyle)style
+                      confirmStyle:(HHConfirmPasswordStyle)confirmStyle {
+    
+    HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    cell.style = style;
+    cell.confirmStyle = confirmStyle;
+    
+    
+    // Set up layout constraints base on styles
+    [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[c]|" options:0 metrics:nil views:@{@"c" : cell.contentView}]];
+    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    if (HHPasswordCellCreateStyle == style) {
+        cell.currentPasswordTextField.hidden = YES;
+    }
+    
+    if (HHConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
+        cell.confirmPasswordTextField.hidden = YES;
+    }
+    
+    
+    return cell;
+
+}
+
++ (instancetype)cellWithIdentifier:(NSString *)identifier
+                         tableView:(UITableView *)tableView
+                             style:(HHPasswordCellStyle)style
+                      confirmStyle:(HHConfirmPasswordStyle)confirmStyle {
+    HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.style = style;
+    cell.confirmStyle = confirmStyle;
+    
+    
+    // Set up layout constraints base on styles
+    [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[c]|" options:0 metrics:nil views:@{@"c" : cell.contentView}]];
+    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    
+    // We update the layout constraints via KVO
+    if (HHPasswordCellCreateStyle == style) {
+        cell.currentPasswordTextField.hidden = YES;
+    }
+    
+    if (HHConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
+        cell.confirmPasswordTextField.hidden = YES;
+    }
+    
+    
+    return cell;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.confirmPasswordTextField removeObserver:self forKeyPath:@"hidden"];
+    [self.currentPasswordTextField removeObserver:self forKeyPath:@"hidden"];
+}
+
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.currentPasswordTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    self.confirmPasswordTextField.delegate = self;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification
+                                                      object:self.passwordTextField
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note)
+    {
+        [weakSelf textFieldDidChange:note.object];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification
+                                                      object:self.confirmPasswordTextField
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note)
+     {
+         [weakSelf textFieldDidChange:note.object];
+     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification
+                                                      object:self.currentPasswordTextField
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note)
+     {
+         [weakSelf textFieldDidChange:note.object];
+     }];
+    
+    [self.confirmPasswordTextField addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
+    [self.currentPasswordTextField addObserver:self forKeyPath:@"hidden" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)prepareForReuse {
@@ -40,39 +138,7 @@
     self.confirmPasswordBottomLayout.constant = 6;
 }
 
-+ (instancetype)cellWithIdentifier:(NSString *)identifier
-                         tableView:(UITableView *)tableView
-                             style:(HHPasswordCellStyle)style
-                      confirmStyle:(HHConfirmPasswordStyle)confirmStyle {
-    HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    cell.style = style;
-    cell.confirmStyle = confirmStyle;
-    cell.passwordTextField.delegate = cell;
-    cell.confirmPasswordTextField.delegate = cell;
-    
-    // Set up layout constraints base on styles
-    [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[c]|" options:0 metrics:nil views:@{@"c" : cell.contentView}]];
-    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    if (HHPasswordCellCreateStyle == style) {
-        cell.passwordTopLayout.constant = cell.currentPasswordTopLayout.constant;
-        
-        cell.currentPasswordTextField.hidden = 0;
-        cell.currentPasswordTopLayout.constant = 0;
-        cell.currentPasswordHeightLayout.constant = 0;
-    }
-    
-    if (HHConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
-        cell.confirmPasswordTopLayout.constant = cell.confirmPasswordBottomLayout.constant;
-        
-        cell.confirmPasswordTextField.hidden = 0;
-        cell.confirmPasswordHeightLayout.constant = 0;
-        cell.confirmPasswordBottomLayout.constant = 0;
-    }
-    
-    
-    return cell;
-}
+
 
 - (void)setStyle:(HHPasswordCellStyle)style {
     _style = style;
@@ -83,14 +149,102 @@
     [super layoutSubviews];
 }
 
+#pragma mark -
+
+- (void)updateWithCurrentPassword:(NSString *)currentPassword
+                         password:(NSString *)password
+                  confirmPassword:(NSString *)confirmPassword
+                     editingBlock:(HHPasswordCellEditingBlock)editingBlock
+                  validatingBlock:(HHPasswordCellValidatingBlock)validtingBlock {
+    
+    self.currentPasswordTextField.text = currentPassword;
+    self.passwordTextField.text = password;
+    self.confirmPasswordTextField.text = confirmPassword;
+    self.editingBlock = editingBlock;
+    self.validatingBlock = validtingBlock;
+    
+    if (HHConfirmPasswordShowWhenSatisfyStyle == self.confirmStyle) {
+        if (self.validatingBlock(password) && self.confirmPasswordTextField.hidden == YES) {
+            self.confirmPasswordTextField.hidden = NO;
+        } else if (self.validatingBlock(password) && self.confirmPasswordTextField.hidden == NO) {
+            self.confirmPasswordTextField.hidden = YES;
+        }
+    }
+    
+}
 
 - (CGFloat)height {
+    
     [self updateConstraints];
     [self layoutIfNeeded];
     CGFloat height = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
     
     return height;
     
+}
+
+#pragma mark -
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (self.editingBlock) {
+        self.editingBlock(self, textField);
+    }
+}
+
+- (void)textFieldDidChange:(UITextField *)textField {
+    
+    if (self.editingBlock) {
+        self.editingBlock(self, textField);
+    }
+    
+    
+    NSString *text = textField.text;
+    
+    if (textField == self.currentPasswordTextField) {
+        
+    } else if (textField == self.passwordTextField) {
+        
+        if (HHConfirmPasswordShowWhenSatisfyStyle == self.confirmStyle) {
+            
+            if ((self.validatingBlock(text) && self.confirmPasswordTextField.hidden == YES)
+                || (!self.validatingBlock(text) && self.confirmPasswordTextField.hidden == NO)) {
+                if (self.satisfyBlock) {
+                    self.satisfyBlock(textField);
+                }
+            }
+        }
+        
+    } else if (textField == self.confirmPasswordTextField) {
+        
+    }
+    
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (object == self.confirmPasswordTextField && [keyPath isEqual:@"hidden"]) {
+        if ([change[NSKeyValueChangeNewKey] isEqual:@YES]) {
+            self.confirmPasswordTopLayout.constant = self.confirmPasswordBottomLayout.constant;
+            self.confirmPasswordHeightLayout.constant = 0;
+            self.confirmPasswordBottomLayout.constant = 0;
+        } else {
+            self.confirmPasswordTopLayout.constant = 8;
+            self.confirmPasswordHeightLayout.constant = 30;
+            self.confirmPasswordBottomLayout.constant = 6;
+        }
+    } else if (object == self.currentPasswordTextField && [keyPath isEqual:@"hidden"]) {
+        if ([change[NSKeyValueChangeNewKey] isEqual:@YES]) {
+            self.passwordTopLayout.constant = self.currentPasswordTopLayout.constant;
+            self.currentPasswordTopLayout.constant = 0;
+            self.currentPasswordHeightLayout.constant = 0;
+        } else {
+            self.currentPasswordTopLayout.constant = 7;
+            self.currentPasswordHeightLayout.constant = 30;
+            self.passwordTopLayout.constant = 8;
+
+        }
+    }
 }
 
 @end

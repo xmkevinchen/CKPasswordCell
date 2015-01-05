@@ -9,7 +9,21 @@
 #import "ViewController.h"
 #import "HHPasswordCell.h"
 
+@interface HHPasswordForm : NSObject
+
+@property (copy, nonatomic) NSString *currentPassword;
+@property (copy, nonatomic) NSString *password;
+@property (copy, nonatomic) NSString *confirmPassword;
+
+@end
+
+@implementation HHPasswordForm
+
+@end
+
 @interface ViewController ()
+
+@property (nonatomic, strong) NSMutableDictionary *passwords;
 
 @end
 
@@ -30,6 +44,12 @@ typedef NS_ENUM(NSInteger, HHSection) {
     self.title = @"Password Cell";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"HHPasswordCell" bundle:nil] forCellReuseIdentifier:@"HHPasswordCell"];
+    self.passwords = [@{
+                        @(HHCreatePasswordSection) : [[HHPasswordForm alloc] init],
+                        @(HHCreatePasswordSatisfyConfirmSection) : [[HHPasswordForm alloc] init],
+                        @(HHUpdatePasswordSection) : [[HHPasswordForm alloc] init],
+                        @(HHUpdatePasswordSatisfyConfirmSection) : [[HHPasswordForm alloc] init],
+                        } mutableCopy];
     
 }
 
@@ -95,6 +115,32 @@ typedef NS_ENUM(NSInteger, HHSection) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    HHPasswordForm *form = self.passwords[@(indexPath.section)];
+    
+    __weak typeof(tableView) weakTableView = tableView;
+    __weak typeof(form) weakForm = form;
+    
+    void (^HHPasswordCellEditingBlock)(HHPasswordCell*, UITextField *) = ^(HHPasswordCell *cell, UITextField *textField) {
+        if (textField == cell.currentPasswordTextField) {
+            weakForm.currentPassword = textField.text;
+        } else if (textField == cell.passwordTextField) {
+            weakForm.password = textField.text;
+        } else if (textField == cell.confirmPasswordTextField) {
+            weakForm.confirmPassword = textField.text;
+        }
+    };
+    
+    void (^HHPasswordCellSatisfyBlock)(UITextField *) = ^(UITextField *textField) {
+        [weakTableView reloadRowsAtIndexPaths:@[indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+        HHPasswordCell *newCell = (HHPasswordCell *)[weakTableView cellForRowAtIndexPath:indexPath];
+        [newCell.passwordTextField becomeFirstResponder];
+    };
+    
+    BOOL (^HHPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {
+        
+        return [password isEqual:@"password"];
+    };
     
     HHPasswordCell *passwordCell = nil;
     switch (indexPath.section) {
@@ -111,6 +157,9 @@ typedef NS_ENUM(NSInteger, HHSection) {
                                                     tableView:tableView
                                                         style:HHPasswordCellCreateStyle
                                                  confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
+            passwordCell.satisfyBlock = HHPasswordCellSatisfyBlock;
+            
+            
             break;
         }
             
@@ -127,19 +176,33 @@ typedef NS_ENUM(NSInteger, HHSection) {
                                                     tableView:tableView
                                                         style:HHPasswordCellUpdateStyle
                                                  confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
+            passwordCell.satisfyBlock = HHPasswordCellSatisfyBlock;
+            
             break;
         }
             
         default:
             break;
     }
+
+    [passwordCell updateWithCurrentPassword:form.currentPassword
+                                   password:form.password
+                            confirmPassword:form.confirmPassword
+                               editingBlock:HHPasswordCellEditingBlock
+                            validatingBlock:HHPasswordCellValidatingBlock];
+    
+
     
     return passwordCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat heightForRow = 120;
+    
+    HHPasswordForm *form = self.passwords[@(indexPath.section)];
+    
     HHPasswordCell *passwordCell = nil;
+    
     switch (indexPath.section) {
         case HHCreatePasswordSection: {
             passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
@@ -150,18 +213,24 @@ typedef NS_ENUM(NSInteger, HHSection) {
         }
             
         case HHCreatePasswordSatisfyConfirmSection: {
+            
             passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
                                                     tableView:tableView
                                                         style:HHPasswordCellCreateStyle
                                                  confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
+            
+            
             break;
         }
             
         case HHUpdatePasswordSection: {
-            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
-                                                    tableView:tableView
-                                                        style:HHPasswordCellUpdateStyle
-                                                 confirmStyle:HHConfirmPasswordAlwaysShowStyle];
+        
+            if (passwordCell == nil) {
+                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                        tableView:tableView
+                                                            style:HHPasswordCellUpdateStyle
+                                                     confirmStyle:HHConfirmPasswordAlwaysShowStyle];
+            }
             break;
         }
             
@@ -176,6 +245,18 @@ typedef NS_ENUM(NSInteger, HHSection) {
         default:
             break;
     }
+    
+    
+    BOOL (^HHPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {        
+        return [password isEqual:@"password"];
+    };
+    
+
+    [passwordCell updateWithCurrentPassword:form.currentPassword
+                                   password:form.password
+                            confirmPassword:form.confirmPassword
+                               editingBlock:nil
+                            validatingBlock:HHPasswordCellValidatingBlock];
     
     heightForRow = [passwordCell height];
     NSLog(@"[%ld, %ld] heightForRow = %f", (long)indexPath.section, (long)indexPath.row, heightForRow);

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class HHPasswordCell;
+
 typedef NS_ENUM(NSUInteger, HHPasswordCellStyle) {
     HHPasswordCellCreateStyle,
     HHPasswordCellUpdateStyle
@@ -19,7 +21,8 @@ typedef NS_ENUM(NSUInteger, HHConfirmPasswordStyle) {
 };
 
 typedef void (^HHPasswordCellSatisfyBlock)(UITextField *textField);
-typedef void (^HHPasswordCellValidateBlock)(NSArray *validations, UITextField *textField);
+typedef void (^HHPasswordCellEditingBlock)(HHPasswordCell *cell, UITextField *textField);
+typedef BOOL (^HHPasswordCellValidatingBlock)(NSString *password);
 
 @interface HHPasswordCell : UITableViewCell
 
@@ -31,12 +34,28 @@ typedef void (^HHPasswordCellValidateBlock)(NSArray *validations, UITextField *t
 @property (readonly, nonatomic) HHConfirmPasswordStyle confirmStyle;
 
 @property (strong, nonatomic) HHPasswordCellSatisfyBlock satisfyBlock;
-@property (strong, nonatomic) HHPasswordCellValidateBlock validateBlock;
+@property (readonly, nonatomic) HHPasswordCellValidatingBlock validatingBlock;
+@property (readonly, nonatomic) HHPasswordCellEditingBlock editingBlock;
 
 + (instancetype)cellWithIdentifier:(NSString *)identifier
                          tableView:(UITableView *)tableView
                              style:(HHPasswordCellStyle)style
                       confirmStyle:(HHConfirmPasswordStyle)confirmStyle;
+
+/**
+ *  Call it to restore / maintain the textfields property after dequeue reused cell from tableview
+ *
+ *  @param currentPassword
+ *  @param password
+ *  @param confirmPassword
+ *  @param editingBlock
+ *  @param validtingBlock  required, cannot be nil
+ */
+- (void)updateWithCurrentPassword:(NSString *)currentPassword
+                         password:(NSString *)password
+                  confirmPassword:(NSString *)confirmPassword
+                     editingBlock:(HHPasswordCellEditingBlock)editingBlock
+                  validatingBlock:(HHPasswordCellValidatingBlock)validtingBlock;
 
 - (CGFloat)height;
 
