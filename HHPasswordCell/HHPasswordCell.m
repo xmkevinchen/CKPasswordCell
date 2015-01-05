@@ -60,7 +60,7 @@
         cell.currentPasswordHeightLayout.constant = 0;
     }
     
-    if (HHConfirmPasswordShowWhenSatisfiedStyle == confirmStyle) {
+    if (HHConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
         cell.confirmPasswordTopLayout.constant = cell.confirmPasswordBottomLayout.constant;
         
         cell.confirmPasswordTextField.hidden = 0;

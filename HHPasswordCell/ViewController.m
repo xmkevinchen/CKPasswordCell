@@ -15,7 +15,9 @@
 
 typedef NS_ENUM(NSInteger, HHSection) {
     HHCreatePasswordSection = 0,
+    HHCreatePasswordSatisfyConfirmSection,
     HHUpdatePasswordSection,
+    HHUpdatePasswordSatisfyConfirmSection,
     HHSectionCount
 };
 
@@ -25,8 +27,9 @@ typedef NS_ENUM(NSInteger, HHSection) {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"HHPasswordCell" bundle:nil] forCellReuseIdentifier:@"CreatePasswordCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"HHPasswordCell" bundle:nil] forCellReuseIdentifier:@"UpdatePasswordCell"];
+    self.title = @"Password Cell";
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"HHPasswordCell" bundle:nil] forCellReuseIdentifier:@"HHPasswordCell"];
     
 }
 
@@ -45,23 +48,49 @@ typedef NS_ENUM(NSInteger, HHSection) {
     return HHSectionCount;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    NSInteger numberOfRows = 0;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *titleForHeader = nil;
     
     switch (section) {
         case HHCreatePasswordSection:
-            numberOfRows = 2;
+        case HHCreatePasswordSatisfyConfirmSection: {
+            titleForHeader = @"Create Password";
             break;
+        }
+            
             
         case HHUpdatePasswordSection:
-            numberOfRows = 2;
+        case HHUpdatePasswordSatisfyConfirmSection:  {
+            titleForHeader = @"Update Password";
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    return titleForHeader;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    NSString *titleForFooter = nil;
+    switch (section) {
+        case HHCreatePasswordSatisfyConfirmSection:
+        case HHUpdatePasswordSatisfyConfirmSection:
+            titleForFooter = @"Satisfy Confirm";
             break;
             
         default:
             break;
     }
     
+    return titleForFooter;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    NSInteger numberOfRows = 1;
+        
     return numberOfRows;
 }
 
@@ -70,32 +99,34 @@ typedef NS_ENUM(NSInteger, HHSection) {
     HHPasswordCell *passwordCell = nil;
     switch (indexPath.section) {
         case HHCreatePasswordSection: {
-            if (indexPath.row == 0) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"CreatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
-                                                     confirmStyle:HHConfirmPasswordAlwaysShowStyle];
-            } else if (indexPath.row == 1) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"CreatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
-                                                     confirmStyle:HHConfirmPasswordShowWhenSatisfiedStyle];
-            }
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellCreateStyle
+                                                 confirmStyle:HHConfirmPasswordAlwaysShowStyle];
+            break;
+        }
+            
+        case HHCreatePasswordSatisfyConfirmSection: {
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellCreateStyle
+                                                 confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
             break;
         }
             
         case HHUpdatePasswordSection: {
-            if (indexPath.row == 0) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"UpdatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellUpdateStyle
-                                                     confirmStyle:HHConfirmPasswordAlwaysShowStyle];
-            } else if (indexPath.row == 1) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"UpdatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellUpdateStyle
-                                                     confirmStyle:HHConfirmPasswordShowWhenSatisfiedStyle];
-            }
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellUpdateStyle
+                                                 confirmStyle:HHConfirmPasswordAlwaysShowStyle];
+            break;
+        }
+            
+        case HHUpdatePasswordSatisfyConfirmSection: {
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellUpdateStyle
+                                                 confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
             break;
         }
             
@@ -111,32 +142,34 @@ typedef NS_ENUM(NSInteger, HHSection) {
     HHPasswordCell *passwordCell = nil;
     switch (indexPath.section) {
         case HHCreatePasswordSection: {
-            if (indexPath.row == 0) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"CreatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
-                                                     confirmStyle:HHConfirmPasswordAlwaysShowStyle];
-            } else if (indexPath.row == 1) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"CreatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
-                                                     confirmStyle:HHConfirmPasswordShowWhenSatisfiedStyle];
-            }
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellCreateStyle
+                                                 confirmStyle:HHConfirmPasswordAlwaysShowStyle];
+            break;
+        }
+            
+        case HHCreatePasswordSatisfyConfirmSection: {
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellCreateStyle
+                                                 confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
             break;
         }
             
         case HHUpdatePasswordSection: {
-            if (indexPath.row == 0) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"UpdatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellUpdateStyle
-                                                     confirmStyle:HHConfirmPasswordAlwaysShowStyle];
-            } else if (indexPath.row == 1) {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"UpdatePasswordCell"
-                                                        tableView:tableView
-                                                            style:HHPasswordCellUpdateStyle
-                                                     confirmStyle:HHConfirmPasswordShowWhenSatisfiedStyle];
-            }
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellUpdateStyle
+                                                 confirmStyle:HHConfirmPasswordAlwaysShowStyle];
+            break;
+        }
+            
+        case HHUpdatePasswordSatisfyConfirmSection: {
+            passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                    tableView:tableView
+                                                        style:HHPasswordCellUpdateStyle
+                                                 confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
             break;
         }
             
