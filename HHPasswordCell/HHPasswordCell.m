@@ -8,7 +8,7 @@
 
 #import "HHPasswordCell.h"
 
-@interface HHPasswordCell()
+@interface HHPasswordCell() <UITextFieldDelegate>
 
 @property (assign, nonatomic) HHPasswordCellStyle style;
 @property (assign, nonatomic) HHConfirmPasswordStyle confirmStyle;
@@ -47,6 +47,8 @@
     HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     cell.style = style;
     cell.confirmStyle = confirmStyle;
+    cell.passwordTextField.delegate = cell;
+    cell.confirmPasswordTextField.delegate = cell;
     
     // Set up layout constraints base on styles
     [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[c]|" options:0 metrics:nil views:@{@"c" : cell.contentView}]];

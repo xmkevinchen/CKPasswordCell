@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A5388BA1A5B0C500044ACC7 /* HHValidationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5388B91A5B0C500044ACC7 /* HHValidationMessage.m */; };
 		0AD996C41A576BE700D4C343 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996C31A576BE700D4C343 /* main.m */; };
 		0AD996C71A576BE700D4C343 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996C61A576BE700D4C343 /* AppDelegate.m */; };
 		0AD996CA1A576BE700D4C343 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996C91A576BE700D4C343 /* ViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A5388B81A5B0C500044ACC7 /* HHValidationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHValidationMessage.h; sourceTree = "<group>"; };
+		0A5388B91A5B0C500044ACC7 /* HHValidationMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHValidationMessage.m; sourceTree = "<group>"; };
 		0AD996BE1A576BE700D4C343 /* HHPasswordCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHPasswordCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD996C21A576BE700D4C343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AD996C31A576BE700D4C343 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				0AD996E71A576D6100D4C343 /* HHPasswordCell.h */,
 				0AD996E81A576D6100D4C343 /* HHPasswordCell.m */,
 				0AD996E91A576D6100D4C343 /* HHPasswordCell.xib */,
+				0A5388B81A5B0C500044ACC7 /* HHValidationMessage.h */,
+				0A5388B91A5B0C500044ACC7 /* HHValidationMessage.m */,
 			);
 			path = HHPasswordCell;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				0AD996CA1A576BE700D4C343 /* ViewController.m in Sources */,
 				0AD996C71A576BE700D4C343 /* AppDelegate.m in Sources */,
 				0AD996EA1A576D6100D4C343 /* HHPasswordCell.m in Sources */,
+				0A5388BA1A5B0C500044ACC7 /* HHValidationMessage.m in Sources */,
 				0AD996C41A576BE700D4C343 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

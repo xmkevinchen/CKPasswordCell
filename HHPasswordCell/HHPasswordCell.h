@@ -18,6 +18,9 @@ typedef NS_ENUM(NSUInteger, HHConfirmPasswordStyle) {
     HHConfirmPasswordShowWhenSatisfyStyle
 };
 
+typedef void (^HHPasswordCellSatisfyBlock)(UITextField *textField);
+typedef void (^HHPasswordCellValidateBlock)(NSArray *validations, UITextField *textField);
+
 @interface HHPasswordCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *currentPasswordTextField;
@@ -26,6 +29,9 @@ typedef NS_ENUM(NSUInteger, HHConfirmPasswordStyle) {
 
 @property (readonly, nonatomic) HHPasswordCellStyle style;
 @property (readonly, nonatomic) HHConfirmPasswordStyle confirmStyle;
+
+@property (strong, nonatomic) HHPasswordCellSatisfyBlock satisfyBlock;
+@property (strong, nonatomic) HHPasswordCellValidateBlock validateBlock;
 
 + (instancetype)cellWithIdentifier:(NSString *)identifier
                          tableView:(UITableView *)tableView
