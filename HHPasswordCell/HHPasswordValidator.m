@@ -99,8 +99,14 @@
     }
     
     return validations;
-
     
+}
+
++ (NSArray *)confirmMessagesWithPassword:(NSString *)password confirmPassword:(NSString *)confirmPassword {
+    NSMutableArray *validations = [NSMutableArray array];
+    [validations addObject:[[HHValidationMessage alloc] initWithMessage:@"Password confirme"
+                                                                isValid:(password && [password isEqual:confirmPassword])]];
+    return validations;
 }
 
 @end

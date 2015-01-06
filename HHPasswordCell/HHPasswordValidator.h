@@ -22,5 +22,6 @@ typedef NS_OPTIONS(NSUInteger, HHPasswordValidation) {
 + (HHPasswordValidation)validateWithPassword:(NSString *)password;
 
 + (NSArray *)messagesFromValiationResults:(HHPasswordValidation)results;
++ (NSArray *)confirmMessagesWithPassword:(NSString *)password confirmPassword:(NSString *)confirmPassword;
 
 @end
