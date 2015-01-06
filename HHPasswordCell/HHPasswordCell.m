@@ -81,6 +81,8 @@
     
     if (HHConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
         cell.confirmPasswordTextField.hidden = YES;
+    } else if (HHConfirmPasswordLockUntilSatisfy == confirmStyle) {
+        cell.confirmPasswordTextField.enabled = NO;
     }
     
     
@@ -223,6 +225,8 @@
                     self.satisfyBlock(textField);
                 }
             }
+        } else if (HHConfirmPasswordLockUntilSatisfy == self.confirmStyle) {
+            self.confirmPasswordTextField.enabled = self.validatingBlock(text);
         }
         
     } else if (textField == self.confirmPasswordTextField) {

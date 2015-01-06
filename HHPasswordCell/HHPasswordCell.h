@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, HHPasswordCellStyle) {
 
 typedef NS_ENUM(NSUInteger, HHConfirmPasswordStyle) {
     HHConfirmPasswordAlwaysShowStyle,
+    HHConfirmPasswordLockUntilSatisfy,
     HHConfirmPasswordShowWhenSatisfyStyle
 };
 

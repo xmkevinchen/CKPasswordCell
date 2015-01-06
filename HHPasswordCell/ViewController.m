@@ -32,6 +32,7 @@
 
 typedef NS_ENUM(NSInteger, HHSection) {
     HHCreatePasswordSection = 0,
+    HHCreatePasswordLockConfirmUntilSatisfySection,
     HHCreatePasswordSatisfyConfirmSection,
     HHUpdatePasswordSection,
     HHUpdatePasswordSatisfyConfirmSection,
@@ -50,6 +51,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
     [self.tableView registerClass:[HHValidationMessageCell class] forCellReuseIdentifier:@"HHValidationMessageCell"];
     self.passwords = [@{
                         @(HHCreatePasswordSection) : [[HHPasswordForm alloc] init],
+                        @(HHCreatePasswordLockConfirmUntilSatisfySection) : [[HHPasswordForm alloc] init],
                         @(HHCreatePasswordSatisfyConfirmSection) : [[HHPasswordForm alloc] init],
                         @(HHUpdatePasswordSection) : [[HHPasswordForm alloc] init],
                         @(HHUpdatePasswordSatisfyConfirmSection) : [[HHPasswordForm alloc] init],
@@ -77,6 +79,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
     
     switch (section) {
         case HHCreatePasswordSection:
+        case HHCreatePasswordLockConfirmUntilSatisfySection:
         case HHCreatePasswordSatisfyConfirmSection: {
             titleForHeader = @"Create Password";
             break;
@@ -102,6 +105,10 @@ typedef NS_ENUM(NSInteger, HHSection) {
         case HHCreatePasswordSatisfyConfirmSection:
         case HHUpdatePasswordSatisfyConfirmSection:
             titleForFooter = @"Satisfy Confirm";
+            break;
+            
+        case HHCreatePasswordLockConfirmUntilSatisfySection:
+            titleForFooter = @"Lock Until Satisfy";
             break;
             
         default:
@@ -206,6 +213,17 @@ typedef NS_ENUM(NSInteger, HHSection) {
                 break;
             }
                 
+            case HHCreatePasswordLockConfirmUntilSatisfySection: {
+                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                        tableView:tableView
+                                                            style:HHPasswordCellCreateStyle
+                                                     confirmStyle:HHConfirmPasswordLockUntilSatisfy];
+//                passwordCell.satisfyBlock = HHPasswordCellSatisfyBlock;
+                
+                
+                break;
+            }
+                
             case HHUpdatePasswordSection: {
                 passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
                                                         tableView:tableView
@@ -281,6 +299,15 @@ typedef NS_ENUM(NSInteger, HHSection) {
                                                             style:HHPasswordCellCreateStyle
                                                      confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
                 
+                
+                break;
+            }
+                
+            case HHCreatePasswordLockConfirmUntilSatisfySection: {
+                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                                                        tableView:tableView
+                                                            style:HHPasswordCellCreateStyle
+                                                     confirmStyle:HHConfirmPasswordLockUntilSatisfy];                
                 
                 break;
             }
