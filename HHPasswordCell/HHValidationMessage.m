@@ -10,7 +10,8 @@
 
 @implementation HHValidationMessage
 
-- (instancetype)initWithMessage:(NSString *)message valid:(BOOL)isValid {
+- (instancetype)initWithMessage:(NSString *)message
+                        isValid:(BOOL)isValid {
     self = [super init];
     if (self) {
         self.message = message;

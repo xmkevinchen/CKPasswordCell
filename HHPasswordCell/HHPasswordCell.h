@@ -24,6 +24,10 @@ typedef void (^HHPasswordCellSatisfyBlock)(UITextField *textField);
 typedef void (^HHPasswordCellEditingBlock)(HHPasswordCell *cell, UITextField *textField);
 typedef BOOL (^HHPasswordCellValidatingBlock)(NSString *password);
 
+typedef NSArray* (^HHPasswordCellPasswordValidationsBlock)(NSString *password);
+typedef NSArray* (^HHPasswordCellConfirmPasswordValidationsBlock)(NSString *password, NSString* confirmPassword);
+typedef void (^HHPasswordCellValidationsUpdatingBlock)(NSArray *validations, UITextField *textField);
+
 @interface HHPasswordCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *currentPasswordTextField;
@@ -36,6 +40,10 @@ typedef BOOL (^HHPasswordCellValidatingBlock)(NSString *password);
 @property (strong, nonatomic) HHPasswordCellSatisfyBlock satisfyBlock;
 @property (readonly, nonatomic) HHPasswordCellValidatingBlock validatingBlock;
 @property (readonly, nonatomic) HHPasswordCellEditingBlock editingBlock;
+
+@property (strong, nonatomic) HHPasswordCellPasswordValidationsBlock passwordValidationsBlock;
+@property (strong, nonatomic) HHPasswordCellConfirmPasswordValidationsBlock confirmPasswordValidationsBlock;
+@property (strong, nonatomic) HHPasswordCellValidationsUpdatingBlock validationsUpdatingBlock;
 
 + (instancetype)cellWithIdentifier:(NSString *)identifier
                          tableView:(UITableView *)tableView

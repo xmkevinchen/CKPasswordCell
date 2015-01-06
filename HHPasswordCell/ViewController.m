@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "HHPasswordCell.h"
+#import "HHPasswordValidator.h"
 
 @interface HHPasswordForm : NSObject
 
@@ -139,7 +140,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
     
     BOOL (^HHPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {
         
-        return [password isEqual:@"password"];
+        return ([HHPasswordValidator validateWithPassword:password] == HHPasswordValidationSuccess);
     };
     
     HHPasswordCell *passwordCell = nil;
@@ -248,7 +249,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
     
     
     BOOL (^HHPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {        
-        return [password isEqual:@"password"];
+        return ([HHPasswordValidator validateWithPassword:password] == HHPasswordValidationSuccess);
     };
     
 

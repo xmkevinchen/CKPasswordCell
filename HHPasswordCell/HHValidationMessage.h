@@ -14,6 +14,6 @@
 @property (copy, nonatomic) NSString *message;
 
 - (instancetype)initWithMessage:(NSString *)message
-                          valid:(BOOL)isValid;
+                          isValid:(BOOL)isValid;
 
 @end

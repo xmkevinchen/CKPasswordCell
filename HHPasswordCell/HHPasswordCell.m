@@ -66,6 +66,7 @@
     HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     cell.style = style;
     cell.confirmStyle = confirmStyle;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
     // Set up layout constraints base on styles
@@ -197,12 +198,17 @@
         self.editingBlock(self, textField);
     }
     
-    
     NSString *text = textField.text;
     
     if (textField == self.currentPasswordTextField) {
         
     } else if (textField == self.passwordTextField) {
+        
+        if (self.passwordValidationsBlock && self.validationsUpdatingBlock) {
+            NSArray *validations = self.passwordValidationsBlock(text);
+            self.validationsUpdatingBlock(validations, textField);
+        }
+        
         
         if (HHConfirmPasswordShowWhenSatisfyStyle == self.confirmStyle) {
             
@@ -215,7 +221,10 @@
         }
         
     } else if (textField == self.confirmPasswordTextField) {
-        
+        if (self.confirmPasswordValidationsBlock && self.validationsUpdatingBlock) {
+            NSArray *validations = self.confirmPasswordValidationsBlock(self.passwordTextField.text, text);
+            self.validationsUpdatingBlock(validations, textField);
+        }
     }
     
 }
