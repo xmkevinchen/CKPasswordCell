@@ -238,6 +238,10 @@ typedef NS_ENUM(NSInteger, HHSection) {
         passwordCell.confirmPasswordValidationsBlock = HHPasswordCellConfirmPasswordValidationsBlock;
         passwordCell.validationsUpdatingBlock = HHPasswordCellValidationUpdatingBlock;
         cell = passwordCell;
+        
+        // hacking way to hide the separator line
+        cell.separatorInset = UIEdgeInsetsMake(0, cell.frame.size.width / 2, 0, cell.frame.size.width / 2);
+        
     } else {
         HHPasswordForm *form = self.passwords[@(indexPath.section)];
         HHValidationMessageCell *messageCell = [HHValidationMessageCell cellWithIdentifier:@"HHValidationMessageCell"
@@ -246,6 +250,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
                                                                                 validColor:VALIDATION_GREEN
                                                                               invalidColor:VALIDATION_RED];
         cell = messageCell;
+        
         
     }
     
@@ -326,6 +331,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
                                                                               invalidColor:VALIDATION_RED];
         
         heightForRow = [messageCell height];
+        
     }
     
     NSLog(@"[%ld, %ld] heightForRow = %f", (long)indexPath.section, (long)indexPath.row, heightForRow);

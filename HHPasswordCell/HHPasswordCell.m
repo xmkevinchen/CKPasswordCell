@@ -133,10 +133,15 @@
 - (void)prepareForReuse {
     self.currentPasswordTopLayout.constant = 7;
     self.currentPasswordHeightLayout.constant = 30;
+    self.currentPasswordTextField.hidden = NO;
+    
     self.passwordTopLayout.constant = 8;
+    
     self.confirmPasswordTopLayout.constant = 8;
     self.confirmPasswordHeightLayout.constant = 30;
     self.confirmPasswordBottomLayout.constant = 6;
+    self.confirmPasswordTextField.hidden = NO;
+    
 }
 
 

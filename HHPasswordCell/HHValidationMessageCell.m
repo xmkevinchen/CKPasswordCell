@@ -125,7 +125,7 @@
     
     // Setup constraints
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[v]-|" options:0 metrics:nil views:@{@"v" : self.tableView}]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[v]-|" options:0 metrics:nil views:@{@"v" : self.tableView}]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]-|" options:0 metrics:nil views:@{@"v" : self.tableView}]];
     
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.tableView registerClass:[HHValidationInnerMessageCell class] forCellReuseIdentifier:@"HHValidationInnerMessageCell"];
@@ -157,7 +157,7 @@
 - (CGFloat) height {
     [self updateConstraints];
     [self layoutIfNeeded];
-    CGFloat height = 8 * 2 + self.tableView.contentSize.height;
+    CGFloat height = 8 + self.tableView.contentSize.height;
     
     return height;
         
