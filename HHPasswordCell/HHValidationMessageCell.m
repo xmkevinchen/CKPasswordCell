@@ -37,7 +37,7 @@
     self.checkmarkImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.checkmarkImageView];
     
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-15-[v(16)]" options:0 metrics:nil views:@{@"v" : self.checkmarkImageView}]];
+    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[v(16)]" options:0 metrics:nil views:@{@"v" : self.checkmarkImageView}]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[v(16)]" options:0 metrics:nil views:@{@"v" : self.checkmarkImageView}]];
     
     self.messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
