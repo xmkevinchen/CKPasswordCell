@@ -33,46 +33,17 @@
 
 + (instancetype)cellWithIdentifier:(NSString *)identifier
                          tableView:(UITableView *)tableView
-                         indexPath:(NSIndexPath *)indexPath
-                             style:(HHPasswordCellStyle)style
-                      confirmStyle:(HHConfirmPasswordStyle)confirmStyle {
-    
-    HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    cell.style = style;
-    cell.confirmStyle = confirmStyle;
-    
-    
-    // Set up layout constraints base on styles
-    [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[c]|" options:0 metrics:nil views:@{@"c" : cell.contentView}]];
-    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    if (HHPasswordCellCreateStyle == style) {
-        cell.currentPasswordTextField.hidden = YES;
-    }
-    
-    if (HHConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
-        cell.confirmPasswordTextField.hidden = YES;
-    }
-    
-    
-    return cell;
-
-}
-
-+ (instancetype)cellWithIdentifier:(NSString *)identifier
-                         tableView:(UITableView *)tableView
                              style:(HHPasswordCellStyle)style
                       confirmStyle:(HHConfirmPasswordStyle)confirmStyle {
     HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+   
     cell.style = style;
     cell.confirmStyle = confirmStyle;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
+        
     // Set up layout constraints base on styles
     [cell addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[c]|" options:0 metrics:nil views:@{@"c" : cell.contentView}]];
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     
     // We update the layout constraints via KVO
     if (HHPasswordCellCreateStyle == style) {
@@ -133,15 +104,15 @@
 }
 
 - (void)prepareForReuse {
-    self.currentPasswordTopLayout.constant = 7;
-    self.currentPasswordHeightLayout.constant = 30;
+//    self.currentPasswordTopLayout.constant = 7;
+//    self.currentPasswordHeightLayout.constant = 30;
     self.currentPasswordTextField.hidden = NO;
     
     self.passwordTopLayout.constant = 8;
     
-    self.confirmPasswordTopLayout.constant = 8;
-    self.confirmPasswordHeightLayout.constant = 30;
-    self.confirmPasswordBottomLayout.constant = 6;
+//    self.confirmPasswordTopLayout.constant = 8;
+//    self.confirmPasswordHeightLayout.constant = 30;
+//    self.confirmPasswordBottomLayout.constant = 6;
     self.confirmPasswordTextField.hidden = NO;
     
 }
