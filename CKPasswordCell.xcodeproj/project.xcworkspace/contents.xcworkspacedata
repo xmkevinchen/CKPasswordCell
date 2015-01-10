@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:HHPasswordCell.xcodeproj">
+      location = "self:CKPasswordCell.xcodeproj">
    </FileRef>
 </Workspace>

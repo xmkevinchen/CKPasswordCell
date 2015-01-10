@@ -42,7 +42,7 @@
 		0A5388BF1A5B71A20044ACC7 /* HHValidationMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHValidationMessageCell.m; sourceTree = "<group>"; };
 		0A5388C11A5B77DC0044ACC7 /* pwd_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pwd_error@2x.png"; sourceTree = "<group>"; };
 		0A5388C21A5B77DC0044ACC7 /* pwd_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pwd_ok@2x.png"; sourceTree = "<group>"; };
-		0AD996BE1A576BE700D4C343 /* HHPasswordCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHPasswordCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AD996BE1A576BE700D4C343 /* CKPasswordCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CKPasswordCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD996C21A576BE700D4C343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AD996C31A576BE700D4C343 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0AD996C51A576BE700D4C343 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		0AD996CC1A576BE700D4C343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0AD996CE1A576BE700D4C343 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0AD996D11A576BE700D4C343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0AD996D71A576BE700D4C343 /* HHPasswordCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HHPasswordCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AD996D71A576BE700D4C343 /* CKPasswordCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CKPasswordCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD996DC1A576BE700D4C343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AD996DD1A576BE800D4C343 /* HHPasswordCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHPasswordCellTests.m; sourceTree = "<group>"; };
 		0AD996E71A576D6100D4C343 /* HHPasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHPasswordCell.h; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 		0AD996B51A576BE700D4C343 = {
 			isa = PBXGroup;
 			children = (
-				0AD996C01A576BE700D4C343 /* HHPasswordCell */,
-				0AD996DA1A576BE700D4C343 /* HHPasswordCellTests */,
+				0AD996C01A576BE700D4C343 /* CKPasswordCell */,
+				0AD996DA1A576BE700D4C343 /* CKPasswordCellTests */,
 				0AD996BF1A576BE700D4C343 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,13 +90,13 @@
 		0AD996BF1A576BE700D4C343 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0AD996BE1A576BE700D4C343 /* HHPasswordCell.app */,
-				0AD996D71A576BE700D4C343 /* HHPasswordCellTests.xctest */,
+				0AD996BE1A576BE700D4C343 /* CKPasswordCell.app */,
+				0AD996D71A576BE700D4C343 /* CKPasswordCellTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0AD996C01A576BE700D4C343 /* HHPasswordCell */ = {
+		0AD996C01A576BE700D4C343 /* CKPasswordCell */ = {
 			isa = PBXGroup;
 			children = (
 				0A5388C11A5B77DC0044ACC7 /* pwd_error@2x.png */,
@@ -119,6 +119,7 @@
 				0A5388BE1A5B71A20044ACC7 /* HHValidationMessageCell.h */,
 				0A5388BF1A5B71A20044ACC7 /* HHValidationMessageCell.m */,
 			);
+			name = CKPasswordCell;
 			path = HHPasswordCell;
 			sourceTree = "<group>";
 		};
@@ -131,12 +132,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0AD996DA1A576BE700D4C343 /* HHPasswordCellTests */ = {
+		0AD996DA1A576BE700D4C343 /* CKPasswordCellTests */ = {
 			isa = PBXGroup;
 			children = (
 				0AD996DD1A576BE800D4C343 /* HHPasswordCellTests.m */,
 				0AD996DB1A576BE700D4C343 /* Supporting Files */,
 			);
+			name = CKPasswordCellTests;
 			path = HHPasswordCellTests;
 			sourceTree = "<group>";
 		};
@@ -151,9 +153,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0AD996BD1A576BE700D4C343 /* HHPasswordCell */ = {
+		0AD996BD1A576BE700D4C343 /* CKPasswordCell */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0AD996E11A576BE800D4C343 /* Build configuration list for PBXNativeTarget "HHPasswordCell" */;
+			buildConfigurationList = 0AD996E11A576BE800D4C343 /* Build configuration list for PBXNativeTarget "CKPasswordCell" */;
 			buildPhases = (
 				0AD996BA1A576BE700D4C343 /* Sources */,
 				0AD996BB1A576BE700D4C343 /* Frameworks */,
@@ -163,14 +165,14 @@
 			);
 			dependencies = (
 			);
-			name = HHPasswordCell;
+			name = CKPasswordCell;
 			productName = HHPasswordCell;
-			productReference = 0AD996BE1A576BE700D4C343 /* HHPasswordCell.app */;
+			productReference = 0AD996BE1A576BE700D4C343 /* CKPasswordCell.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0AD996D61A576BE700D4C343 /* HHPasswordCellTests */ = {
+		0AD996D61A576BE700D4C343 /* CKPasswordCellTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0AD996E41A576BE800D4C343 /* Build configuration list for PBXNativeTarget "HHPasswordCellTests" */;
+			buildConfigurationList = 0AD996E41A576BE800D4C343 /* Build configuration list for PBXNativeTarget "CKPasswordCellTests" */;
 			buildPhases = (
 				0AD996D31A576BE700D4C343 /* Sources */,
 				0AD996D41A576BE700D4C343 /* Frameworks */,
@@ -181,9 +183,9 @@
 			dependencies = (
 				0AD996D91A576BE700D4C343 /* PBXTargetDependency */,
 			);
-			name = HHPasswordCellTests;
+			name = CKPasswordCellTests;
 			productName = HHPasswordCellTests;
-			productReference = 0AD996D71A576BE700D4C343 /* HHPasswordCellTests.xctest */;
+			productReference = 0AD996D71A576BE700D4C343 /* CKPasswordCellTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -204,7 +206,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0AD996B91A576BE700D4C343 /* Build configuration list for PBXProject "HHPasswordCell" */;
+			buildConfigurationList = 0AD996B91A576BE700D4C343 /* Build configuration list for PBXProject "CKPasswordCell" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -217,8 +219,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0AD996BD1A576BE700D4C343 /* HHPasswordCell */,
-				0AD996D61A576BE700D4C343 /* HHPasswordCellTests */,
+				0AD996BD1A576BE700D4C343 /* CKPasswordCell */,
+				0AD996D61A576BE700D4C343 /* CKPasswordCellTests */,
 			);
 		};
 /* End PBXProject section */
@@ -274,7 +276,7 @@
 /* Begin PBXTargetDependency section */
 		0AD996D91A576BE700D4C343 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0AD996BD1A576BE700D4C343 /* HHPasswordCell */;
+			target = 0AD996BD1A576BE700D4C343 /* CKPasswordCell */;
 			targetProxy = 0AD996D81A576BE700D4C343 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -385,7 +387,7 @@
 				INFOPLIST_FILE = HHPasswordCell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CKPasswordCell;
 			};
 			name = Debug;
 		};
@@ -397,7 +399,7 @@
 				INFOPLIST_FILE = HHPasswordCell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CKPasswordCell;
 			};
 			name = Release;
 		};
@@ -415,7 +417,7 @@
 				);
 				INFOPLIST_FILE = HHPasswordCellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CKPasswordCellTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HHPasswordCell.app/HHPasswordCell";
 			};
 			name = Debug;
@@ -430,7 +432,7 @@
 				);
 				INFOPLIST_FILE = HHPasswordCellTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CKPasswordCellTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HHPasswordCell.app/HHPasswordCell";
 			};
 			name = Release;
@@ -438,7 +440,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0AD996B91A576BE700D4C343 /* Build configuration list for PBXProject "HHPasswordCell" */ = {
+		0AD996B91A576BE700D4C343 /* Build configuration list for PBXProject "CKPasswordCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0AD996DF1A576BE800D4C343 /* Debug */,
@@ -447,7 +449,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0AD996E11A576BE800D4C343 /* Build configuration list for PBXNativeTarget "HHPasswordCell" */ = {
+		0AD996E11A576BE800D4C343 /* Build configuration list for PBXNativeTarget "CKPasswordCell" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0AD996E21A576BE800D4C343 /* Debug */,
@@ -456,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0AD996E41A576BE800D4C343 /* Build configuration list for PBXNativeTarget "HHPasswordCellTests" */ = {
+		0AD996E41A576BE800D4C343 /* Build configuration list for PBXNativeTarget "CKPasswordCellTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0AD996E51A576BE800D4C343 /* Debug */,
