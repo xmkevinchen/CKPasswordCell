@@ -11,7 +11,7 @@
 @interface CKPasswordCell() <UITextFieldDelegate>
 
 @property (assign, nonatomic) CKPasswordCellStyle style;
-@property (assign, nonatomic) HHConfirmPasswordStyle confirmStyle;
+@property (assign, nonatomic) CKConfirmPasswordStyle confirmStyle;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentPasswordTopLayout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentPasswordHeightLayout;
@@ -34,7 +34,7 @@
 + (instancetype)cellWithIdentifier:(NSString *)identifier
                          tableView:(UITableView *)tableView
                              style:(CKPasswordCellStyle)style
-                      confirmStyle:(HHConfirmPasswordStyle)confirmStyle {
+                      confirmStyle:(CKConfirmPasswordStyle)confirmStyle {
     CKPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
    
     cell.style = style;
@@ -50,9 +50,9 @@
         cell.currentPasswordTextField.hidden = YES;
     }
     
-    if (HHConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
+    if (CKConfirmPasswordShowWhenSatisfyStyle == confirmStyle) {
         cell.confirmPasswordTextField.hidden = YES;
-    } else if (HHConfirmPasswordLockUntilSatisfy == confirmStyle) {
+    } else if (CKConfirmPasswordLockUntilSatisfy == confirmStyle) {
         cell.confirmPasswordTextField.enabled = NO;
     }
     
@@ -142,7 +142,7 @@
     self.editingBlock = editingBlock;
     self.validatingBlock = validtingBlock;
     
-    if (HHConfirmPasswordShowWhenSatisfyStyle == self.confirmStyle) {
+    if (CKConfirmPasswordShowWhenSatisfyStyle == self.confirmStyle) {
         if (self.validatingBlock(password) && self.confirmPasswordTextField.hidden == YES) {
             self.confirmPasswordTextField.hidden = NO;
         } else if (self.validatingBlock(password) && self.confirmPasswordTextField.hidden == NO) {
@@ -188,7 +188,7 @@
         }
         
         
-        if (HHConfirmPasswordShowWhenSatisfyStyle == self.confirmStyle) {
+        if (CKConfirmPasswordShowWhenSatisfyStyle == self.confirmStyle) {
             
             if ((self.validatingBlock(text) && self.confirmPasswordTextField.hidden == YES)
                 || (!self.validatingBlock(text) && self.confirmPasswordTextField.hidden == NO)) {
@@ -196,7 +196,7 @@
                     self.satisfyBlock(textField);
                 }
             }
-        } else if (HHConfirmPasswordLockUntilSatisfy == self.confirmStyle) {
+        } else if (CKConfirmPasswordLockUntilSatisfy == self.confirmStyle) {
             self.confirmPasswordTextField.enabled = self.validatingBlock(text);
         }
         

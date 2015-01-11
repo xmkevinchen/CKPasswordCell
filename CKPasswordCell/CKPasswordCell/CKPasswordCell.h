@@ -15,10 +15,10 @@ typedef NS_ENUM(NSUInteger, CKPasswordCellStyle) {
     CKPasswordCellUpdateStyle
 };
 
-typedef NS_ENUM(NSUInteger, HHConfirmPasswordStyle) {
-    HHConfirmPasswordAlwaysShowStyle,
-    HHConfirmPasswordLockUntilSatisfy,
-    HHConfirmPasswordShowWhenSatisfyStyle
+typedef NS_ENUM(NSUInteger, CKConfirmPasswordStyle) {
+    CKConfirmPasswordAlwaysShowStyle,
+    CKConfirmPasswordLockUntilSatisfy,
+    CKConfirmPasswordShowWhenSatisfyStyle
 };
 
 typedef void (^CKPasswordCellSatisfyBlock)(UITextField *textField);
@@ -36,7 +36,7 @@ typedef void (^CKPasswordCellValidationsUpdatingBlock)(NSArray *validations, UIT
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
 
 @property (readonly, nonatomic) CKPasswordCellStyle style;
-@property (readonly, nonatomic) HHConfirmPasswordStyle confirmStyle;
+@property (readonly, nonatomic) CKConfirmPasswordStyle confirmStyle;
 
 @property (strong, nonatomic) CKPasswordCellSatisfyBlock satisfyBlock;
 @property (readonly, nonatomic) CKPasswordCellValidatingBlock validatingBlock;
@@ -49,7 +49,7 @@ typedef void (^CKPasswordCellValidationsUpdatingBlock)(NSArray *validations, UIT
 + (instancetype)cellWithIdentifier:(NSString *)identifier
                          tableView:(UITableView *)tableView
                              style:(CKPasswordCellStyle)style
-                      confirmStyle:(HHConfirmPasswordStyle)confirmStyle;
+                      confirmStyle:(CKConfirmPasswordStyle)confirmStyle;
 
 /**
  *  Call it to restore / maintain the textfields property after dequeue reused cell from tableview
