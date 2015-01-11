@@ -1,19 +1,19 @@
 //
-//  HHValidationMessageCell.m
-//  HHPasswordCell
+//  CKValidationMessageCell.m
+//  CKPasswordCell
 //
 //  Created by Kevin Chen on 1/5/15.
 //  Copyright (c) 2015 Kevin Chen. All rights reserved.
 //
 
-#import "HHValidationMessageCell.h"
-#import "HHValidationMessage.h"
+#import "CKValidationMessageCell.h"
+#import "CKValidationMessage.h"
 
 
 
-@interface HHValidationInnerMessageCell : UITableViewCell
+@interface CKValidationInnerMessageCell : UITableViewCell
 
-@property (strong, nonatomic) HHValidationMessage *message;
+@property (strong, nonatomic) CKValidationMessage *message;
 @property (strong, nonatomic) UIImageView *checkmarkImageView;
 @property (strong, nonatomic) UILabel *messageLabel;
 @property (strong, nonatomic) UIImage *imgOK;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation HHValidationInnerMessageCell
+@implementation CKValidationInnerMessageCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -41,7 +41,7 @@
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[v(16)]" options:0 metrics:nil views:@{@"v" : self.checkmarkImageView}]];
     
     self.messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.messageLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:14.0];
+    self.messageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     self.messageLabel.font = [UIFont systemFontOfSize:14.0f];
     self.messageLabel.numberOfLines = 0;
     self.messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -76,7 +76,7 @@
     return _imgError;
 }
 
-- (void)setMessage:(HHValidationMessage *)message {
+- (void)setMessage:(CKValidationMessage *)message {
     _message = message;
     
     if (message.isValid) {
@@ -91,12 +91,12 @@
 
 @end
 
-@interface HHValidationMessageCell () <UITableViewDataSource, UITableViewDelegate>
+@interface CKValidationMessageCell () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
-@implementation HHValidationMessageCell
+@implementation CKValidationMessageCell
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -128,7 +128,7 @@
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]-|" options:0 metrics:nil views:@{@"v" : self.tableView}]];
     
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.tableView registerClass:[HHValidationInnerMessageCell class] forCellReuseIdentifier:@"HHValidationInnerMessageCell"];
+    [self.tableView registerClass:[CKValidationInnerMessageCell class] forCellReuseIdentifier:@"CKValidationInnerMessageCell"];
     
     [self addObserver:self forKeyPath:@"validations" options:NSKeyValueObservingOptionNew context:NULL];
     
@@ -144,7 +144,7 @@
                         validColor:(UIColor *)validColor
                       invalidColor:(UIColor *)invalidColor {
     
-    HHValidationMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    CKValidationMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell) {
         cell.validations = validations;
         cell.validColor = validColor;
@@ -170,8 +170,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HHValidationInnerMessageCell *cell = (HHValidationInnerMessageCell *)[tableView dequeueReusableCellWithIdentifier:@"HHValidationInnerMessageCell"];
-    HHValidationMessage *message = self.validations[indexPath.row];
+    CKValidationInnerMessageCell *cell = (CKValidationInnerMessageCell *)[tableView dequeueReusableCellWithIdentifier:@"CKValidationInnerMessageCell"];
+    CKValidationMessage *message = self.validations[indexPath.row];
     
 //    UIColor *validColor = self.validColor ? self.validColor : VALIDATION_GREEN;
 //    UIColor *invalidColor = self.invalidColor ? self.invalidColor : VALIDATION_RED;
@@ -182,8 +182,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HHValidationInnerMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HHValidationInnerMessageCell"];
-    HHValidationMessage *message = self.validations[indexPath.row];
+    CKValidationInnerMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CKValidationInnerMessageCell"];
+    CKValidationMessage *message = self.validations[indexPath.row];
     
     cell.message = message;
     

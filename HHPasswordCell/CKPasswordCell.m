@@ -1,16 +1,16 @@
 //
-//  HHPasswordCell.m
-//  HHPasswordCell
+//  CKPasswordCell.m
+//  CKPasswordCell
 //
 //  Created by Kevin Chen on 1/2/15.
 //  Copyright (c) 2015 Kevin Chen. All rights reserved.
 //
 
-#import "HHPasswordCell.h"
+#import "CKPasswordCell.h"
 
-@interface HHPasswordCell() <UITextFieldDelegate>
+@interface CKPasswordCell() <UITextFieldDelegate>
 
-@property (assign, nonatomic) HHPasswordCellStyle style;
+@property (assign, nonatomic) CKPasswordCellStyle style;
 @property (assign, nonatomic) HHConfirmPasswordStyle confirmStyle;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentPasswordTopLayout;
@@ -22,20 +22,20 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmPasswordHeightLayout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *confirmPasswordBottomLayout;
 
-@property (strong, nonatomic) HHPasswordCellEditingBlock editingBlock;
-@property (strong, nonatomic) HHPasswordCellValidatingBlock validatingBlock;
+@property (strong, nonatomic) CKPasswordCellEditingBlock editingBlock;
+@property (strong, nonatomic) CKPasswordCellValidatingBlock validatingBlock;
 
 
 @end
 
-@implementation HHPasswordCell
+@implementation CKPasswordCell
 
 
 + (instancetype)cellWithIdentifier:(NSString *)identifier
                          tableView:(UITableView *)tableView
-                             style:(HHPasswordCellStyle)style
+                             style:(CKPasswordCellStyle)style
                       confirmStyle:(HHConfirmPasswordStyle)confirmStyle {
-    HHPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    CKPasswordCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
    
     cell.style = style;
     cell.confirmStyle = confirmStyle;
@@ -46,7 +46,7 @@
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     // We update the layout constraints via KVO
-    if (HHPasswordCellCreateStyle == style) {
+    if (CKPasswordCellCreateStyle == style) {
         cell.currentPasswordTextField.hidden = YES;
     }
     
@@ -119,7 +119,7 @@
 
 
 
-- (void)setStyle:(HHPasswordCellStyle)style {
+- (void)setStyle:(CKPasswordCellStyle)style {
     _style = style;
     
 }
@@ -133,8 +133,8 @@
 - (void)updateWithCurrentPassword:(NSString *)currentPassword
                          password:(NSString *)password
                   confirmPassword:(NSString *)confirmPassword
-                     editingBlock:(HHPasswordCellEditingBlock)editingBlock
-                  validatingBlock:(HHPasswordCellValidatingBlock)validtingBlock {
+                     editingBlock:(CKPasswordCellEditingBlock)editingBlock
+                  validatingBlock:(CKPasswordCellValidatingBlock)validtingBlock {
     
     self.currentPasswordTextField.text = currentPassword;
     self.passwordTextField.text = password;

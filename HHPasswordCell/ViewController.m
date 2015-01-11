@@ -1,15 +1,15 @@
 //
 //  ViewController.m
-//  HHPasswordCell
+//  CKPasswordCell
 //
 //  Created by Kevin Chen on 1/2/15.
 //  Copyright (c) 2015 Kevin Chen. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "HHPasswordCell.h"
-#import "HHPasswordValidator.h"
-#import "HHValidationMessageCell.h"
+#import "CKPasswordCell.h"
+#import "CKPasswordValidator.h"
+#import "CKValidationMessageCell.h"
 
 @interface HHPasswordForm : NSObject
 
@@ -47,8 +47,8 @@ typedef NS_ENUM(NSInteger, HHSection) {
     
     self.title = @"Password Cell";
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"HHPasswordCell" bundle:nil] forCellReuseIdentifier:@"HHPasswordCell"];
-    [self.tableView registerClass:[HHValidationMessageCell class] forCellReuseIdentifier:@"HHValidationMessageCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CKPasswordCell" bundle:nil] forCellReuseIdentifier:@"CKPasswordCell"];
+    [self.tableView registerClass:[CKValidationMessageCell class] forCellReuseIdentifier:@"CKValidationMessageCell"];
     self.passwords = [@{
                         @(HHCreatePasswordSection) : [[HHPasswordForm alloc] init],
                         @(HHCreatePasswordLockConfirmUntilSatisfySection) : [[HHPasswordForm alloc] init],
@@ -138,7 +138,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
     __weak typeof(tableView) weakTableView = tableView;
     __weak typeof(form) weakForm = form;
     
-    void (^HHPasswordCellEditingBlock)(HHPasswordCell*, UITextField *) = ^(HHPasswordCell *cell, UITextField *textField) {
+    void (^CKPasswordCellEditingBlock)(CKPasswordCell*, UITextField *) = ^(CKPasswordCell *cell, UITextField *textField) {
         if (textField == cell.currentPasswordTextField) {
             weakForm.currentPassword = textField.text;
         } else if (textField == cell.passwordTextField) {
@@ -148,30 +148,30 @@ typedef NS_ENUM(NSInteger, HHSection) {
         }
     };
     
-    void (^HHPasswordCellSatisfyBlock)(UITextField *) = ^(UITextField *textField) {
+    void (^CKPasswordCellSatisfyBlock)(UITextField *) = ^(UITextField *textField) {
         [weakTableView reloadRowsAtIndexPaths:@[indexPath]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
-        HHPasswordCell *newCell = (HHPasswordCell *)[weakTableView cellForRowAtIndexPath:indexPath];
+        CKPasswordCell *newCell = (CKPasswordCell *)[weakTableView cellForRowAtIndexPath:indexPath];
         [newCell.passwordTextField becomeFirstResponder];
     };
     
-    BOOL (^HHPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {
+    BOOL (^CKPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {
         
-        return ([HHPasswordValidator validateWithPassword:password] == HHPasswordValidationSuccess);
+        return ([CKPasswordValidator validateWithPassword:password] == CKPasswordValidationSuccess);
     };
     
-    NSArray* (^HHPasswordCellPasswordValidationsBlock)(NSString *password) = ^NSArray* (NSString *password) {
+    NSArray* (^CKPasswordCellPasswordValidationsBlock)(NSString *password) = ^NSArray* (NSString *password) {
         
-        HHPasswordValidation results = [HHPasswordValidator validateWithPassword:password];
-        return [HHPasswordValidator messagesFromValiationResults:results];
+        CKPasswordValidation results = [CKPasswordValidator validateWithPassword:password];
+        return [CKPasswordValidator messagesFromValiationResults:results];
         
     };
     
-    NSArray* (^HHPasswordCellConfirmPasswordValidationsBlock)(NSString *password, NSString *confirmPassword) = ^NSArray* (NSString *password, NSString *confirmPassword) {
-        return [HHPasswordValidator confirmMessagesWithPassword:password confirmPassword:confirmPassword];
+    NSArray* (^CKPasswordCellConfirmPasswordValidationsBlock)(NSString *password, NSString *confirmPassword) = ^NSArray* (NSString *password, NSString *confirmPassword) {
+        return [CKPasswordValidator confirmMessagesWithPassword:password confirmPassword:confirmPassword];
     };
     
-    void (^HHPasswordCellValidationUpdatingBlock)(NSArray *, UITextField *) = ^(NSArray *validations, UITextField *textField) {
+    void (^CKPasswordCellValidationUpdatingBlock)(NSArray *, UITextField *) = ^(NSArray *validations, UITextField *textField) {
         [weakTableView beginUpdates];
         
         if (weakForm.validations == nil) {
@@ -192,52 +192,52 @@ typedef NS_ENUM(NSInteger, HHSection) {
     };
     
     if (indexPath.row == 0) {
-        HHPasswordCell *passwordCell = nil;
+        CKPasswordCell *passwordCell = nil;
         switch (indexPath.section) {
             case HHCreatePasswordSection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
+                                                            style:CKPasswordCellCreateStyle
                                                      confirmStyle:HHConfirmPasswordAlwaysShowStyle];
                 break;
             }
                 
             case HHCreatePasswordSatisfyConfirmSection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
+                                                            style:CKPasswordCellCreateStyle
                                                      confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
-                passwordCell.satisfyBlock = HHPasswordCellSatisfyBlock;
+                passwordCell.satisfyBlock = CKPasswordCellSatisfyBlock;
                 
                 
                 break;
             }
                 
             case HHCreatePasswordLockConfirmUntilSatisfySection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
+                                                            style:CKPasswordCellCreateStyle
                                                      confirmStyle:HHConfirmPasswordLockUntilSatisfy];
-//                passwordCell.satisfyBlock = HHPasswordCellSatisfyBlock;
+//                passwordCell.satisfyBlock = CKPasswordCellSatisfyBlock;
                 
                 
                 break;
             }
                 
             case HHUpdatePasswordSection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellUpdateStyle
+                                                            style:CKPasswordCellUpdateStyle
                                                      confirmStyle:HHConfirmPasswordAlwaysShowStyle];
                 break;
             }
                 
             case HHUpdatePasswordSatisfyConfirmSection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellUpdateStyle
+                                                            style:CKPasswordCellUpdateStyle
                                                      confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
-                passwordCell.satisfyBlock = HHPasswordCellSatisfyBlock;
+                passwordCell.satisfyBlock = CKPasswordCellSatisfyBlock;
                 
                 break;
             }
@@ -249,12 +249,12 @@ typedef NS_ENUM(NSInteger, HHSection) {
         [passwordCell updateWithCurrentPassword:form.currentPassword
                                        password:form.password
                                 confirmPassword:form.confirmPassword
-                                   editingBlock:HHPasswordCellEditingBlock
-                                validatingBlock:HHPasswordCellValidatingBlock];
+                                   editingBlock:CKPasswordCellEditingBlock
+                                validatingBlock:CKPasswordCellValidatingBlock];
         
-        passwordCell.passwordValidationsBlock = HHPasswordCellPasswordValidationsBlock;
-        passwordCell.confirmPasswordValidationsBlock = HHPasswordCellConfirmPasswordValidationsBlock;
-        passwordCell.validationsUpdatingBlock = HHPasswordCellValidationUpdatingBlock;
+        passwordCell.passwordValidationsBlock = CKPasswordCellPasswordValidationsBlock;
+        passwordCell.confirmPasswordValidationsBlock = CKPasswordCellConfirmPasswordValidationsBlock;
+        passwordCell.validationsUpdatingBlock = CKPasswordCellValidationUpdatingBlock;
         cell = passwordCell;
         
         // hacking way to hide the separator line
@@ -262,7 +262,7 @@ typedef NS_ENUM(NSInteger, HHSection) {
         
     } else {
         HHPasswordForm *form = self.passwords[@(indexPath.section)];
-        HHValidationMessageCell *messageCell = [HHValidationMessageCell cellWithIdentifier:@"HHValidationMessageCell"
+        CKValidationMessageCell *messageCell = [CKValidationMessageCell cellWithIdentifier:@"CKValidationMessageCell"
                                                                                  tableView:tableView
                                                                                validations:form.validations
                                                                                 validColor:VALIDATION_GREEN
@@ -281,22 +281,22 @@ typedef NS_ENUM(NSInteger, HHSection) {
     HHPasswordForm *form = self.passwords[@(indexPath.section)];
     
     if (indexPath.row == 0) {
-        HHPasswordCell *passwordCell = nil;
+        CKPasswordCell *passwordCell = nil;
         
         switch (indexPath.section) {
             case HHCreatePasswordSection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
+                                                            style:CKPasswordCellCreateStyle
                                                      confirmStyle:HHConfirmPasswordAlwaysShowStyle];
                 break;
             }
                 
             case HHCreatePasswordSatisfyConfirmSection: {
                 
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
+                                                            style:CKPasswordCellCreateStyle
                                                      confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
                 
                 
@@ -304,9 +304,9 @@ typedef NS_ENUM(NSInteger, HHSection) {
             }
                 
             case HHCreatePasswordLockConfirmUntilSatisfySection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellCreateStyle
+                                                            style:CKPasswordCellCreateStyle
                                                      confirmStyle:HHConfirmPasswordLockUntilSatisfy];                
                 
                 break;
@@ -315,18 +315,18 @@ typedef NS_ENUM(NSInteger, HHSection) {
             case HHUpdatePasswordSection: {
                 
                 if (passwordCell == nil) {
-                    passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                    passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                             tableView:tableView
-                                                                style:HHPasswordCellUpdateStyle
+                                                                style:CKPasswordCellUpdateStyle
                                                          confirmStyle:HHConfirmPasswordAlwaysShowStyle];
                 }
                 break;
             }
                 
             case HHUpdatePasswordSatisfyConfirmSection: {
-                passwordCell = [HHPasswordCell cellWithIdentifier:@"HHPasswordCell"
+                passwordCell = [CKPasswordCell cellWithIdentifier:@"CKPasswordCell"
                                                         tableView:tableView
-                                                            style:HHPasswordCellUpdateStyle
+                                                            style:CKPasswordCellUpdateStyle
                                                      confirmStyle:HHConfirmPasswordShowWhenSatisfyStyle];
                 break;
             }
@@ -336,8 +336,8 @@ typedef NS_ENUM(NSInteger, HHSection) {
         }
         
         
-        BOOL (^HHPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {
-            return ([HHPasswordValidator validateWithPassword:password] == HHPasswordValidationSuccess);
+        BOOL (^CKPasswordCellValidatingBlock)(NSString *password) = ^BOOL(NSString *password) {
+            return ([CKPasswordValidator validateWithPassword:password] == CKPasswordValidationSuccess);
         };
         
         
@@ -345,13 +345,13 @@ typedef NS_ENUM(NSInteger, HHSection) {
                                        password:form.password
                                 confirmPassword:form.confirmPassword
                                    editingBlock:nil
-                                validatingBlock:HHPasswordCellValidatingBlock];
+                                validatingBlock:CKPasswordCellValidatingBlock];
         
         heightForRow = [passwordCell height];
         
     } else {
         HHPasswordForm *form = self.passwords[@(indexPath.section)];
-        HHValidationMessageCell *messageCell = [HHValidationMessageCell cellWithIdentifier:@"HHValidationMessageCell"
+        CKValidationMessageCell *messageCell = [CKValidationMessageCell cellWithIdentifier:@"CKValidationMessageCell"
                                                                                  tableView:tableView
                                                                                validations:form.validations
                                                                                 validColor:VALIDATION_GREEN

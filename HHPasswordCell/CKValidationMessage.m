@@ -1,14 +1,14 @@
 //
-//  HHValidationMessage.m
-//  HHPasswordCell
+//  CKValidationMessage.m
+//  CKValidationMessage
 //
 //  Created by Kevin Chen on 1/5/15.
 //  Copyright (c) 2015 Kevin Chen. All rights reserved.
 //
 
-#import "HHValidationMessage.h"
+#import "CKValidationMessage.h"
 
-@implementation HHValidationMessage
+@implementation CKValidationMessage
 
 - (instancetype)initWithMessage:(NSString *)message
                         isValid:(BOOL)isValid {
@@ -31,8 +31,8 @@
     if (object == nil) return NO;
     if (![object isKindOfClass:[self class]]) return NO;
     
-    return (self.isValid == [(HHValidationMessage *)object isValid])
-    && ([self.message isEqual:[(HHValidationMessage *)object message]]);
+    return (self.isValid == [(CKValidationMessage *)object isValid])
+    && ([self.message isEqual:[(CKValidationMessage *)object message]]);
     
 }
 

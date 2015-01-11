@@ -1,6 +1,6 @@
 //
 //  main.m
-//  HHPasswordCell
+//  CKPasswordCell
 //
 //  Created by Kevin Chen on 1/2/15.
 //  Copyright (c) 2015 Kevin Chen. All rights reserved.

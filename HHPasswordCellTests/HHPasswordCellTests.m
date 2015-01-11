@@ -1,6 +1,6 @@
 //
-//  HHPasswordCellTests.m
-//  HHPasswordCellTests
+//  CKPasswordCellTests.m
+//  CKPasswordCellTests
 //
 //  Created by Kevin Chen on 1/2/15.
 //  Copyright (c) 2015 Kevin Chen. All rights reserved.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface HHPasswordCellTests : XCTestCase
+@interface CKPasswordCellTests : XCTestCase
 
 @end
 
-@implementation HHPasswordCellTests
+@implementation CKPasswordCellTests
 
 - (void)setUp {
     [super setUp];
