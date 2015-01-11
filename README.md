@@ -1,4 +1,4 @@
-HHPasswordCell
+CKPasswordCell
 ==============
 
 1. A practise to adjust space with hidden / shown objects via Autolayout constraints
