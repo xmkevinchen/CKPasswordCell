@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A5388BA1A5B0C500044ACC7 /* CKValidationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5388B91A5B0C500044ACC7 /* CKValidationMessage.m */; };
-		0A5388BD1A5B6B950044ACC7 /* CKPasswordValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5388BC1A5B6B950044ACC7 /* CKPasswordValidator.m */; };
-		0A5388C01A5B71A20044ACC7 /* CKValidationMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5388BF1A5B71A20044ACC7 /* CKValidationMessageCell.m */; };
-		0A5388C31A5B77DC0044ACC7 /* pwd_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5388C11A5B77DC0044ACC7 /* pwd_error@2x.png */; };
-		0A5388C41A5B77DC0044ACC7 /* pwd_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5388C21A5B77DC0044ACC7 /* pwd_ok@2x.png */; };
-		0AD996C41A576BE700D4C343 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996C31A576BE700D4C343 /* main.m */; };
-		0AD996C71A576BE700D4C343 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996C61A576BE700D4C343 /* AppDelegate.m */; };
-		0AD996CA1A576BE700D4C343 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996C91A576BE700D4C343 /* ViewController.m */; };
-		0AD996CD1A576BE700D4C343 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD996CB1A576BE700D4C343 /* Main.storyboard */; };
-		0AD996CF1A576BE700D4C343 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AD996CE1A576BE700D4C343 /* Images.xcassets */; };
-		0AD996D21A576BE700D4C343 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD996D01A576BE700D4C343 /* LaunchScreen.xib */; };
+		0A7C37D81A63172500135E66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C37D71A63172500135E66 /* AppDelegate.m */; };
+		0A7C37DB1A63172F00135E66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C37DA1A63172F00135E66 /* ViewController.m */; };
+		0A7C37E01A63175F00135E66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C37DF1A63175F00135E66 /* Images.xcassets */; };
+		0A7C37E71A63177400135E66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C37E51A63177400135E66 /* main.m */; };
+		0A7C37F91A63183D00135E66 /* pwd_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C37F71A63183D00135E66 /* pwd_error@2x.png */; };
+		0A7C37FA1A63183D00135E66 /* pwd_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C37F81A63183D00135E66 /* pwd_ok@2x.png */; };
+		0A7C37FF1A63185900135E66 /* CKPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C37FD1A63185900135E66 /* CKPasswordCell.m */; };
+		0A7C38001A63185900135E66 /* CKPasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C37FE1A63185900135E66 /* CKPasswordCell.xib */; };
+		0A7C38081A63187A00135E66 /* CKPasswordValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C38031A63187A00135E66 /* CKPasswordValidator.m */; };
+		0A7C38091A63187A00135E66 /* CKValidationMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C38051A63187A00135E66 /* CKValidationMessage.m */; };
+		0A7C380A1A63187A00135E66 /* CKValidationMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C38071A63187A00135E66 /* CKValidationMessageCell.m */; };
+		0A7C380F1A63189100135E66 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C380B1A63189100135E66 /* LaunchScreen.xib */; };
+		0A7C38101A63189100135E66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C380D1A63189100135E66 /* Main.storyboard */; };
 		0AD996DE1A576BE800D4C343 /* HHPasswordCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996DD1A576BE800D4C343 /* HHPasswordCellTests.m */; };
-		0AD996EA1A576D6100D4C343 /* CKPasswordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD996E81A576D6100D4C343 /* CKPasswordCell.m */; };
-		0AD996EB1A576D6100D4C343 /* CKPasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD996E91A576D6100D4C343 /* CKPasswordCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,30 +34,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A5388B81A5B0C500044ACC7 /* CKValidationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKValidationMessage.h; sourceTree = "<group>"; };
-		0A5388B91A5B0C500044ACC7 /* CKValidationMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKValidationMessage.m; sourceTree = "<group>"; };
-		0A5388BB1A5B6B950044ACC7 /* CKPasswordValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPasswordValidator.h; sourceTree = "<group>"; };
-		0A5388BC1A5B6B950044ACC7 /* CKPasswordValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPasswordValidator.m; sourceTree = "<group>"; };
-		0A5388BE1A5B71A20044ACC7 /* CKValidationMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKValidationMessageCell.h; sourceTree = "<group>"; };
-		0A5388BF1A5B71A20044ACC7 /* CKValidationMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKValidationMessageCell.m; sourceTree = "<group>"; };
-		0A5388C11A5B77DC0044ACC7 /* pwd_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pwd_error@2x.png"; sourceTree = "<group>"; };
-		0A5388C21A5B77DC0044ACC7 /* pwd_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pwd_ok@2x.png"; sourceTree = "<group>"; };
+		0A7C37D61A63172500135E66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CKPasswordCell/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		0A7C37D71A63172500135E66 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = CKPasswordCell/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		0A7C37D91A63172F00135E66 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = CKPasswordCell/ViewController.h; sourceTree = SOURCE_ROOT; };
+		0A7C37DA1A63172F00135E66 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = CKPasswordCell/ViewController.m; sourceTree = SOURCE_ROOT; };
+		0A7C37DF1A63175F00135E66 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CKPasswordCell/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		0A7C37E41A63177400135E66 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CKPasswordCell/Info.plist; sourceTree = SOURCE_ROOT; };
+		0A7C37E51A63177400135E66 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CKPasswordCell/main.m; sourceTree = SOURCE_ROOT; };
+		0A7C37F71A63183D00135E66 /* pwd_error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pwd_error@2x.png"; sourceTree = "<group>"; };
+		0A7C37F81A63183D00135E66 /* pwd_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pwd_ok@2x.png"; sourceTree = "<group>"; };
+		0A7C37FC1A63185900135E66 /* CKPasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPasswordCell.h; sourceTree = "<group>"; };
+		0A7C37FD1A63185900135E66 /* CKPasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPasswordCell.m; sourceTree = "<group>"; };
+		0A7C37FE1A63185900135E66 /* CKPasswordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CKPasswordCell.xib; sourceTree = "<group>"; };
+		0A7C38021A63187A00135E66 /* CKPasswordValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPasswordValidator.h; sourceTree = "<group>"; };
+		0A7C38031A63187A00135E66 /* CKPasswordValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPasswordValidator.m; sourceTree = "<group>"; };
+		0A7C38041A63187A00135E66 /* CKValidationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKValidationMessage.h; sourceTree = "<group>"; };
+		0A7C38051A63187A00135E66 /* CKValidationMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKValidationMessage.m; sourceTree = "<group>"; };
+		0A7C38061A63187A00135E66 /* CKValidationMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKValidationMessageCell.h; sourceTree = "<group>"; };
+		0A7C38071A63187A00135E66 /* CKValidationMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKValidationMessageCell.m; sourceTree = "<group>"; };
+		0A7C380C1A63189100135E66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = CKPasswordCell/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
+		0A7C380E1A63189100135E66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CKPasswordCell/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		0AD996BE1A576BE700D4C343 /* CKPasswordCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CKPasswordCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AD996C21A576BE700D4C343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AD996C31A576BE700D4C343 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0AD996C51A576BE700D4C343 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		0AD996C61A576BE700D4C343 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0AD996C81A576BE700D4C343 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0AD996C91A576BE700D4C343 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0AD996CC1A576BE700D4C343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0AD996CE1A576BE700D4C343 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0AD996D11A576BE700D4C343 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0AD996D71A576BE700D4C343 /* CKPasswordCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CKPasswordCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AD996DC1A576BE700D4C343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AD996DD1A576BE800D4C343 /* HHPasswordCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HHPasswordCellTests.m; sourceTree = "<group>"; };
-		0AD996E71A576D6100D4C343 /* CKPasswordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPasswordCell.h; sourceTree = "<group>"; };
-		0AD996E81A576D6100D4C343 /* CKPasswordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPasswordCell.m; sourceTree = "<group>"; };
-		0AD996E91A576D6100D4C343 /* CKPasswordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CKPasswordCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +78,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A7C37F61A63183D00135E66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A7C37F71A63183D00135E66 /* pwd_error@2x.png */,
+				0A7C37F81A63183D00135E66 /* pwd_ok@2x.png */,
+			);
+			name = Resources;
+			path = CKPasswordCell/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+		0A7C37FB1A63185900135E66 /* CKPasswordCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A7C37FC1A63185900135E66 /* CKPasswordCell.h */,
+				0A7C37FD1A63185900135E66 /* CKPasswordCell.m */,
+				0A7C37FE1A63185900135E66 /* CKPasswordCell.xib */,
+			);
+			name = CKPasswordCell;
+			path = CKPasswordCell/CKPasswordCell;
+			sourceTree = SOURCE_ROOT;
+		};
+		0A7C38011A63187A00135E66 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				0A7C38021A63187A00135E66 /* CKPasswordValidator.h */,
+				0A7C38031A63187A00135E66 /* CKPasswordValidator.m */,
+				0A7C38041A63187A00135E66 /* CKValidationMessage.h */,
+				0A7C38051A63187A00135E66 /* CKValidationMessage.m */,
+				0A7C38061A63187A00135E66 /* CKValidationMessageCell.h */,
+				0A7C38071A63187A00135E66 /* CKValidationMessageCell.m */,
+			);
+			name = Validation;
+			path = CKPasswordCell/Validation;
+			sourceTree = SOURCE_ROOT;
+		};
 		0AD996B51A576BE700D4C343 = {
 			isa = PBXGroup;
 			children = (
@@ -99,25 +134,17 @@
 		0AD996C01A576BE700D4C343 /* CKPasswordCell */ = {
 			isa = PBXGroup;
 			children = (
-				0A5388C11A5B77DC0044ACC7 /* pwd_error@2x.png */,
-				0A5388C21A5B77DC0044ACC7 /* pwd_ok@2x.png */,
-				0AD996C51A576BE700D4C343 /* AppDelegate.h */,
-				0AD996C61A576BE700D4C343 /* AppDelegate.m */,
-				0AD996C81A576BE700D4C343 /* ViewController.h */,
-				0AD996C91A576BE700D4C343 /* ViewController.m */,
-				0AD996CB1A576BE700D4C343 /* Main.storyboard */,
-				0AD996CE1A576BE700D4C343 /* Images.xcassets */,
-				0AD996D01A576BE700D4C343 /* LaunchScreen.xib */,
+				0A7C380B1A63189100135E66 /* LaunchScreen.xib */,
+				0A7C380D1A63189100135E66 /* Main.storyboard */,
+				0A7C37FB1A63185900135E66 /* CKPasswordCell */,
+				0A7C38011A63187A00135E66 /* Validation */,
+				0A7C37F61A63183D00135E66 /* Resources */,
+				0A7C37D61A63172500135E66 /* AppDelegate.h */,
+				0A7C37D71A63172500135E66 /* AppDelegate.m */,
+				0A7C37D91A63172F00135E66 /* ViewController.h */,
+				0A7C37DA1A63172F00135E66 /* ViewController.m */,
+				0A7C37DF1A63175F00135E66 /* Images.xcassets */,
 				0AD996C11A576BE700D4C343 /* Supporting Files */,
-				0AD996E71A576D6100D4C343 /* CKPasswordCell.h */,
-				0AD996E81A576D6100D4C343 /* CKPasswordCell.m */,
-				0AD996E91A576D6100D4C343 /* CKPasswordCell.xib */,
-				0A5388B81A5B0C500044ACC7 /* CKValidationMessage.h */,
-				0A5388B91A5B0C500044ACC7 /* CKValidationMessage.m */,
-				0A5388BB1A5B6B950044ACC7 /* CKPasswordValidator.h */,
-				0A5388BC1A5B6B950044ACC7 /* CKPasswordValidator.m */,
-				0A5388BE1A5B71A20044ACC7 /* CKValidationMessageCell.h */,
-				0A5388BF1A5B71A20044ACC7 /* CKValidationMessageCell.m */,
 			);
 			name = CKPasswordCell;
 			path = HHPasswordCell;
@@ -126,8 +153,8 @@
 		0AD996C11A576BE700D4C343 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0AD996C21A576BE700D4C343 /* Info.plist */,
-				0AD996C31A576BE700D4C343 /* main.m */,
+				0A7C37E41A63177400135E66 /* Info.plist */,
+				0A7C37E51A63177400135E66 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -230,12 +257,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A5388C31A5B77DC0044ACC7 /* pwd_error@2x.png in Resources */,
-				0AD996CD1A576BE700D4C343 /* Main.storyboard in Resources */,
-				0A5388C41A5B77DC0044ACC7 /* pwd_ok@2x.png in Resources */,
-				0AD996D21A576BE700D4C343 /* LaunchScreen.xib in Resources */,
-				0AD996EB1A576D6100D4C343 /* CKPasswordCell.xib in Resources */,
-				0AD996CF1A576BE700D4C343 /* Images.xcassets in Resources */,
+				0A7C380F1A63189100135E66 /* LaunchScreen.xib in Resources */,
+				0A7C37E01A63175F00135E66 /* Images.xcassets in Resources */,
+				0A7C38001A63185900135E66 /* CKPasswordCell.xib in Resources */,
+				0A7C38101A63189100135E66 /* Main.storyboard in Resources */,
+				0A7C37FA1A63183D00135E66 /* pwd_ok@2x.png in Resources */,
+				0A7C37F91A63183D00135E66 /* pwd_error@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,13 +280,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AD996CA1A576BE700D4C343 /* ViewController.m in Sources */,
-				0AD996C71A576BE700D4C343 /* AppDelegate.m in Sources */,
-				0A5388C01A5B71A20044ACC7 /* CKValidationMessageCell.m in Sources */,
-				0AD996EA1A576D6100D4C343 /* CKPasswordCell.m in Sources */,
-				0A5388BD1A5B6B950044ACC7 /* CKPasswordValidator.m in Sources */,
-				0A5388BA1A5B0C500044ACC7 /* CKValidationMessage.m in Sources */,
-				0AD996C41A576BE700D4C343 /* main.m in Sources */,
+				0A7C37DB1A63172F00135E66 /* ViewController.m in Sources */,
+				0A7C38081A63187A00135E66 /* CKPasswordValidator.m in Sources */,
+				0A7C38091A63187A00135E66 /* CKValidationMessage.m in Sources */,
+				0A7C37FF1A63185900135E66 /* CKPasswordCell.m in Sources */,
+				0A7C37D81A63172500135E66 /* AppDelegate.m in Sources */,
+				0A7C37E71A63177400135E66 /* main.m in Sources */,
+				0A7C380A1A63187A00135E66 /* CKValidationMessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,20 +309,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0AD996CB1A576BE700D4C343 /* Main.storyboard */ = {
+		0A7C380B1A63189100135E66 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0AD996CC1A576BE700D4C343 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0AD996D01A576BE700D4C343 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AD996D11A576BE700D4C343 /* Base */,
+				0A7C380C1A63189100135E66 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		0A7C380D1A63189100135E66 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A7C380E1A63189100135E66 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -384,7 +411,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = HHPasswordCell/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CKPasswordCell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = CKPasswordCell;
@@ -396,7 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				INFOPLIST_FILE = HHPasswordCell/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CKPasswordCell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = CKPasswordCell;
